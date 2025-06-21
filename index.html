@@ -16,6 +16,7 @@
             --primary: #0066cc;
             --primary-dark: #004499;
             --secondary: #00d4aa;
+            --warning: #ff6b35;
             --dark: #1a1a1a;
             --light: #f8fafc;
             --gray: #64748b;
@@ -33,6 +34,35 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            background: var(--white);
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .lang-btn.active,
+        .lang-btn:hover {
+            background: var(--primary);
+            color: var(--white);
         }
 
         /* Header */
@@ -94,11 +124,34 @@
             transform: translateY(-2px);
         }
 
+        /* Alert Banner */
+        .alert-banner {
+            background: linear-gradient(135deg, var(--warning) 0%, #ff8f65 100%);
+            color: var(--white);
+            padding: 15px 0;
+            text-align: center;
+            font-weight: 600;
+            position: relative;
+            margin-top: 80px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.9; }
+        }
+
+        .alert-banner::before {
+            content: '⚠️';
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: var(--white);
-            padding: 140px 0 80px;
+            padding: 100px 0 80px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -159,10 +212,109 @@
             color: var(--primary);
         }
 
+        /* Why Cloud Section */
+        .why-cloud {
+            padding: 100px 0;
+            background: var(--light);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .comparison-card {
+            padding: 2.5rem;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .old-way {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border: 2px solid var(--warning);
+            position: relative;
+        }
+
+        .old-way::before {
+            content: '❌';
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: var(--warning);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .new-way {
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            border: 2px solid var(--secondary);
+            position: relative;
+        }
+
+        .new-way::before {
+            content: '✅';
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: var(--secondary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .comparison-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .old-way h3 {
+            color: var(--warning);
+        }
+
+        .new-way h3 {
+            color: var(--secondary);
+        }
+
+        .comparison-list {
+            list-style: none;
+            text-align: left;
+        }
+
+        .comparison-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .old-way .comparison-list li::before {
+            content: '💸';
+            font-size: 1.2rem;
+        }
+
+        .new-way .comparison-list li::before {
+            content: '🚀';
+            font-size: 1.2rem;
+        }
+
         /* Services Section */
         .services {
             padding: 100px 0;
-            background: var(--light);
         }
 
         .section-header {
@@ -246,56 +398,6 @@
             left: 0;
             color: var(--secondary);
             font-weight: bold;
-        }
-
-        /* About Section */
-        .about {
-            padding: 100px 0;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .stat {
-            text-align: center;
-            padding: 1.5rem;
-            background: var(--light);
-            border-radius: 12px;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .stat-label {
-            color: var(--gray);
-            font-weight: 500;
         }
 
         /* Contact Section */
@@ -382,6 +484,15 @@
             border-top: 1px solid rgba(255,255,255,0.1);
         }
 
+        /* Language Content */
+        .lang-content {
+            display: none;
+        }
+
+        .lang-content.active {
+            display: block;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
@@ -401,14 +512,20 @@
                 align-items: center;
             }
 
-            .about-content,
+            .comparison-grid,
             .contact-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
 
-            .stats {
-                grid-template-columns: 1fr;
+            .lang-switcher {
+                top: 10px;
+                right: 10px;
+            }
+
+            .alert-banner {
+                font-size: 0.9rem;
+                padding: 10px;
             }
         }
 
@@ -425,234 +542,319 @@
         }
 
         .service-card,
-        .about-text,
-        .contact-content > div {
+        .comparison-card {
             animation: fadeInUp 0.6s ease-out;
         }
     </style>
 </head>
 <body>
+<!-- Language Switcher -->
+<div class="lang-switcher">
+    <button class="lang-btn active" onclick="switchLanguage('en')" id="lang-en">EN</button>
+    <button class="lang-btn" onclick="switchLanguage('pt')" id="lang-pt">PT</button>
+</div>
+
 <header>
     <nav class="container">
         <a href="https://www.itsupportcloud.com/" class="logo">SMC & Co.</a>
         <ul class="nav-links">
-            <li><a href="#services">Services</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#services" class="nav-services">Services</a></li>
+            <li><a href="#why-cloud" class="nav-why">Why Cloud</a></li>
+            <li><a href="#contact" class="nav-contact">Contact</a></li>
         </ul>
-        <a href="#contact" class="cta-button">Get Started</a>
+        <a href="#contact" class="cta-button nav-cta">Get Started</a>
     </nav>
 </header>
 
-<section class="hero">
+<!-- Alert Banner -->
+<div class="alert-banner">
     <div class="container">
-        <div class="hero-content">
-            <h1>Transform Your Infrastructure with Expert Cloud Solutions</h1>
-            <p>Specialized cloud migration, data pipeline engineering, and DevSecOps services that reduce costs, enhance security, and accelerate your digital transformation.</p>
-            <div class="hero-buttons">
-                <a href="#contact" class="cta-button">Schedule Consultation</a>
-                <a href="#services" class="btn-secondary">View Services</a>
+        <span class="alert-text">Planning a new data center? STOP! We'll show you why cloud is cheaper, faster, and more secure.</span>
+    </div>
+</div>
+
+<!-- ENGLISH CONTENT -->
+<div class="lang-content active" id="content-en">
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Skip the Data Center. Go Straight to Cloud.</h1>
+                <p>Don't waste millions on outdated infrastructure. We help enterprises migrate to cloud solutions that are 60% cheaper, infinitely scalable, and secure by design.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="cta-button">Free Cloud Assessment</a>
+                    <a href="#why-cloud" class="btn-secondary">See the Comparison</a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="services" class="services">
-    <div class="container">
-        <div class="section-header">
-            <h2>Core Services</h2>
-            <p>Comprehensive cloud and data solutions designed for enterprise-scale transformation</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">☁️</div>
-                <h3>Cloud Migration Services</h3>
-                <p>Seamless migration from on-premise to AWS, Azure, and multi-cloud environments with zero downtime strategies.</p>
-                <ul class="service-features">
-                    <li>Assessment & migration planning</li>
-                    <li>Application modernization</li>
-                    <li>Database migration & optimization</li>
-                    <li>Legacy system transformation</li>
-                </ul>
+    <section id="why-cloud" class="why-cloud">
+        <div class="container">
+            <div class="section-header">
+                <h2>On-Premises vs Cloud: The Reality</h2>
+                <p>Building a data center in 2025 is like buying a horse when cars exist. Here's why smart companies choose cloud.</p>
             </div>
-            <div class="service-card">
-                <div class="service-icon">🔄</div>
-                <h3>Data Pipeline Engineering</h3>
-                <p>Robust ETL/ELT solutions that ensure reliable, scalable data processing for analytics and machine learning.</p>
-                <ul class="service-features">
-                    <li>Real-time data streaming</li>
-                    <li>Data warehouse architecture</li>
-                    <li>Apache Airflow orchestration</li>
-                    <li>Data quality & governance</li>
-                </ul>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🔒</div>
-                <h3>DevSecOps Implementation</h3>
-                <p>Integrated security, automation, and compliance frameworks that accelerate delivery while maintaining enterprise security standards.</p>
-                <ul class="service-features">
-                    <li>CI/CD pipeline automation</li>
-                    <li>Security-first development</li>
-                    <li>Compliance automation (SOC2, HIPAA)</li>
-                    <li>Infrastructure as Code</li>
-                </ul>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">⚡</div>
-                <h3>Cloud Architecture & Optimization</h3>
-                <p>Performance tuning and cost optimization strategies that typically reduce infrastructure costs by 30-50%.</p>
-                <ul class="service-features">
-                    <li>Cost optimization audits</li>
-                    <li>Performance monitoring</li>
-                    <li>Auto-scaling implementation</li>
-                    <li>Disaster recovery planning</li>
-                </ul>
+            <div class="comparison-grid">
+                <div class="comparison-card old-way">
+                    <h3>Traditional Data Center</h3>
+                    <ul class="comparison-list">
+                        <li>€500K+ upfront investment</li>
+                        <li>6-18 months setup time</li>
+                        <li>24/7 maintenance staff needed</li>
+                        <li>Power, cooling, space costs</li>
+                        <li>Hardware becomes obsolete</li>
+                        <li>Limited disaster recovery</li>
+                        <li>No automatic scaling</li>
+                        <li>Security is your problem</li>
+                    </ul>
+                </div>
+                <div class="comparison-card new-way">
+                    <h3>Cloud Infrastructure</h3>
+                    <ul class="comparison-list">
+                        <li>Pay only for what you use</li>
+                        <li>Live in 24 hours</li>
+                        <li>Managed by cloud experts</li>
+                        <li>No physical infrastructure</li>
+                        <li>Always latest technology</li>
+                        <li>Built-in backup & recovery</li>
+                        <li>Auto-scales with demand</li>
+                        <li>Enterprise-grade security</li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="about" class="about">
-    <div class="container">
-        <div class="about-content">
-            <div class="about-text">
-                <h2>Proven Expertise in Enterprise Cloud Transformation</h2>
-                <p>With over a decade of experience in cloud architecture and data engineering, I help organizations modernize their infrastructure and unlock the full potential of cloud technologies.</p>
-                <p>My approach combines technical excellence with business understanding, ensuring that every solution not only works flawlessly but also delivers measurable business value.</p>
-                <div class="stats">
-                    <div class="stat">
-                        <div class="stat-number">50+</div>
-                        <div class="stat-label">Successful Migrations</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">$2M+</div>
-                        <div class="stat-label">Cost Savings Delivered</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">99.9%</div>
-                        <div class="stat-label">Uptime Achieved</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">24/7</div>
-                        <div class="stat-label">Support Available</div>
-                    </div>
-                </div>
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Cloud Migration Services</h2>
+                <p>Complete cloud transformation solutions that eliminate the need for on-premises infrastructure</p>
             </div>
-            <div class="about-image">
-                <svg width="400" height="300" viewBox="0 0 400 300" style="background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); border-radius: 16px;">
-                    <rect x="50" y="50" width="80" height="60" rx="8" fill="#0066cc" opacity="0.8"/>
-                    <rect x="150" y="70" width="80" height="60" rx="8" fill="#00d4aa" opacity="0.8"/>
-                    <rect x="250" y="40" width="80" height="60" rx="8" fill="#0066cc" opacity="0.6"/>
-                    <rect x="100" y="150" width="80" height="60" rx="8" fill="#00d4aa" opacity="0.6"/>
-                    <rect x="200" y="170" width="80" height="60" rx="8" fill="#0066cc" opacity="0.8"/>
-
-                    <!-- Connection lines -->
-                    <line x1="130" y1="80" x2="150" y2="100" stroke="#64748b" stroke-width="2" opacity="0.5"/>
-                    <line x1="230" y1="100" x2="250" y2="70" stroke="#64748b" stroke-width="2" opacity="0.5"/>
-                    <line x1="140" y1="150" x2="180" y2="130" stroke="#64748b" stroke-width="2" opacity="0.5"/>
-                    <line x1="200" y1="200" x2="240" y2="160" stroke="#64748b" stroke-width="2" opacity="0.5"/>
-
-                    <text x="200" y="280" text-anchor="middle" fill="#64748b" font-size="14" font-weight="500">Cloud Infrastructure Architecture</text>
-                </svg>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">☁️</div>
+                    <h3>Complete Cloud Migration</h3>
+                    <p>Migrate your entire infrastructure to AWS, Azure, or Google Cloud with zero downtime and immediate cost savings.</p>
+                    <ul class="service-features">
+                        <li>Assessment & migration planning</li>
+                        <li>Application modernization</li>
+                        <li>Database migration & optimization</li>
+                        <li>Legacy system transformation</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔄</div>
+                    <h3>Data Pipeline Engineering</h3>
+                    <p>Build cloud-native data solutions that process terabytes of data without managing servers.</p>
+                    <ul class="service-features">
+                        <li>Real-time data streaming</li>
+                        <li>Serverless data processing</li>
+                        <li>Cloud data warehousing</li>
+                        <li>AI/ML data preparation</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔒</div>
+                    <h3>Cloud Security & Compliance</h3>
+                    <p>Enterprise-grade security that's better than any on-premises solution, managed by cloud experts.</p>
+                    <ul class="service-features">
+                        <li>Zero-trust architecture</li>
+                        <li>Automated compliance (GDPR, SOC2)</li>
+                        <li>Advanced threat detection</li>
+                        <li>Identity & access management</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💰</div>
+                    <h3>Cost Optimization</h3>
+                    <p>Reduce IT costs by 40-70% compared to maintaining on-premises infrastructure.</p>
+                    <ul class="service-features">
+                        <li>Right-sizing resources</li>
+                        <li>Automated scaling</li>
+                        <li>Reserved capacity planning</li>
+                        <li>Multi-cloud cost management</li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="contact" class="contact">
-    <div class="container">
-        <div class="contact-content">
-            <div>
-                <h2>Ready to Transform Your Infrastructure?</h2>
-                <p>Let's discuss how cloud migration and data engineering can accelerate your business goals. Schedule a free consultation to explore the possibilities.</p>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <span>📧</span>
-                        <span>info@itsupportcloud.com</span>
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div>
+                    <h2>Ready to Skip the Data Center?</h2>
+                    <p>Get a free assessment showing how much you'll save by going cloud-first instead of building on-premises infrastructure.</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span>📧</span>
+                            <span>info@itsupportcloud.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <span>🌐</span>
+                            <span>www.itsupportcloud.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <span>📱</span>
+                            <span>+351 XXX XXX XXX</span>
+                        </div>
                     </div>
-                    <div class="contact-item">
-                        <span>🌐</span>
-                        <span>www.itsupportcloud.com</span>
+                </div>
+                <form class="contact-form" action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your name" required>
                     </div>
-                    <div class="contact-item">
-                        <span>📱</span>
-                        <span>+351 XXX XXX XXX</span>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="your.email@company.com" required>
                     </div>
+                    <div class="form-group">
+                        <label for="company">Company</label>
+                        <input type="text" id="company" name="company" placeholder="Your company name">
+                    </div>
+                    <div class="form-group">
+                        <label for="project">Current Infrastructure Challenge</label>
+                        <textarea id="project" name="project" rows="4" placeholder="Tell us about your data center plans or current infrastructure challenges..."></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Get Free Cloud Assessment</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- PORTUGUESE CONTENT -->
+<div class="lang-content" id="content-pt">
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Esqueça o Data Center. Vá Direto para a Cloud.</h1>
+                <p>Não desperdice milhões em infraestrutura obsoleta. Ajudamos empresas a migrar para soluções cloud 60% mais baratas, infinitamente escaláveis e seguras por design.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="cta-button">Avaliação Gratuita</a>
+                    <a href="#why-cloud" class="btn-secondary">Ver Comparação</a>
                 </div>
             </div>
-            <form class="contact-form" action="#" method="POST">
-                <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" placeholder="Your name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" placeholder="your.email@company.com" required>
-                </div>
-                <div class="form-group">
-                    <label for="company">Company</label>
-                    <input type="text" id="company" name="company" placeholder="Your company name">
-                </div>
-                <div class="form-group">
-                    <label for="project">Project Details</label>
-                    <textarea id="project" name="project" rows="4" placeholder="Tell me about your cloud migration or data engineering needs..."></textarea>
-                </div>
-                <button type="submit" class="cta-button">Send Message</button>
-            </form>
         </div>
-    </div>
-</section>
+    </section>
 
-<footer>
-    <div class="container">
-        <p>&copy; 2025 SMC & Co., Lda. All rights reserved. | Empowering businesses through cloud transformation.</p>
-    </div>
-</footer>
+    <section id="why-cloud" class="why-cloud">
+        <div class="container">
+            <div class="section-header">
+                <h2>On-Premises vs Cloud: A Realidade</h2>
+                <p>Construir um data center em 2025 é como comprar um cavalo quando existem carros. Veja por que empresas inteligentes escolhem cloud.</p>
+            </div>
+            <div class="comparison-grid">
+                <div class="comparison-card old-way">
+                    <h3>Data Center Tradicional</h3>
+                    <ul class="comparison-list">
+                        <li>€500K+ investimento inicial</li>
+                        <li>6-18 meses para implementar</li>
+                        <li>Equipe de manutenção 24/7</li>
+                        <li>Custos de energia, refrigeração, espaço</li>
+                        <li>Hardware fica obsoleto</li>
+                        <li>Recuperação limitada de desastres</li>
+                        <li>Sem escalabilidade automática</li>
+                        <li>Segurança é seu problema</li>
+                    </ul>
+                </div>
+                <div class="comparison-card new-way">
+                    <h3>Infraestrutura Cloud</h3>
+                    <ul class="comparison-list">
+                        <li>Pague apenas pelo que usar</li>
+                        <li>Funcionando em 24 horas</li>
+                        <li>Gerido por especialistas cloud</li>
+                        <li>Sem infraestrutura física</li>
+                        <li>Sempre a tecnologia mais recente</li>
+                        <li>Backup e recuperação integrados</li>
+                        <li>Escala automaticamente</li>
+                        <li>Segurança de nível empresarial</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<script>
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nossos Serviços de Migração Cloud</h2>
+                <p>Soluções completas de transformação cloud que eliminam a necessidade de infraestrutura on-premises</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">☁️</div>
+                    <h3>Migração Completa para Cloud</h3>
+                    <p>Migre toda sua infraestrutura para AWS, Azure ou Google Cloud com zero downtime e economia imediata.</p>
+                    <ul class="service-features">
+                        <li>Avaliação e planeamento de migração</li>
+                        <li>Modernização de aplicações</li>
+                        <li>Migração e otimização de bases de dados</li>
+                        <li>Transformação de sistemas legacy</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔄</div>
+                    <h3>Engenharia de Pipelines de Dados</h3>
+                    <p>Construa soluções de dados cloud-native que processam terabytes sem gerir servidores.</p>
+                    <ul class="service-features">
+                        <li>Streaming de dados em tempo real</li>
+                        <li>Processamento serverless</li>
+                        <li>Data warehousing na cloud</li>
+                        <li>Preparação de dados para IA/ML</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔒</div>
+                    <h3>Segurança e Compliance Cloud</h3>
+                    <p>Segurança de nível empresarial melhor que qualquer solução on-premises, gerida por especialistas.</p>
+                    <ul class="service-features">
+                        <li>Arquitetura zero-trust</li>
+                        <li>Compliance automatizada (RGPD, SOC2)</li>
+                        <li>Deteção avançada de ameaças</li>
+                        <li>Gestão de identidade e acesso</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💰</div>
+                    <h3>Otimização de Custos</h3>
+                    <p>Reduza custos de TI em 40-70% comparado com manter infraestrutura on-premises.</p>
+                    <ul class="service-features">
+                        <li>Dimensionamento correto de recursos</li>
+                        <li>Escalabilidade automatizada</li>
+                        <li>Planeamento de capacidade reservada</li>
+                        <li>Gestão de custos multi-cloud</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    // Header scroll effect
-    window.addEventListener('scroll', () => {
-        const header = document.querySelector('header');
-        if (window.scrollY > 100) {
-            header.style.background = 'rgba(255, 255, 255, 0.95)';
-            header.style.backdropFilter = 'blur(10px)';
-        } else {
-            header.style.background = 'var(--white)';
-            header.style.backdropFilter = 'none';
-        }
-    });
-
-    // Form submission handler
-    document.querySelector('.contact-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('Thank you for your message! I\'ll get back to you within 24 hours.');
-        this.reset();
-    });
-
-    // Service card hover effects
-    document.querySelectorAll('.service-card').forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px) scale(1.02)';
-        });
-
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-</script>
-</body>
-</html>
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div>
+                    <h2>Pronto para Esquecer o Data Center?</h2>
+                    <p>Obtenha uma avaliação gratuita mostrando quanto poupará ao escolher cloud em vez de construir infraestrutura on-premises.</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span>📧</span>
+                            <span>info@itsupportcloud.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <span>🌐</span>
+                            <span>www.itsupportcloud.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <span>📱</span>
+                            <span>+351 XXX XXX XXX</span>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name-pt">Nome Completo</label>
+                        <input type="text" id="name-pt" name="name" placeholder="Seu nome" required>
+                    </div>
