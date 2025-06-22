@@ -5,13 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SMC & Co., Lda. - Enterprise Cloud Migration & Data Engineering</title>
     <meta name="description" content="Expert cloud migration, data pipeline engineering, and DevSecOps services for enterprise clients. Transform your infrastructure with proven solutions.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         :root {
             --primary: #0066cc;
             --primary-dark: #004499;
@@ -23,11 +20,18 @@
             --white: #ffffff;
         }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--dark);
             background: var(--white);
+            scroll-behavior: smooth;
         }
 
         .container {
@@ -81,6 +85,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem 0;
+            height: 80px;
         }
 
         .logo {
@@ -101,6 +106,23 @@
             color: var(--dark);
             font-weight: 500;
             transition: color 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .nav-links a:hover {
@@ -117,11 +139,13 @@
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 102, 204, 0.2);
         }
 
         .cta-button:hover {
             background: var(--primary-dark);
             transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 102, 204, 0.3);
         }
 
         /* Alert Banner */
@@ -132,13 +156,13 @@
             text-align: center;
             font-weight: 600;
             position: relative;
-            margin-top: 80px;
+            margin-top: 80px; /* Height of the header */
             animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.9; }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
         }
 
         .alert-banner::before {
@@ -149,23 +173,11 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: var(--white);
-            padding: 100px 0 80px;
+            padding: 180px 0 120px;
             text-align: center;
             position: relative;
             overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
-            opacity: 0.3;
+            background: var(--light);
         }
 
         .hero-content {
@@ -178,12 +190,17 @@
             font-weight: 700;
             margin-bottom: 1.5rem;
             line-height: 1.2;
+            color: var(--dark);
+        }
+
+        .hero h1 .highlight {
+            color: var(--primary);
         }
 
         .hero p {
             font-size: 1.3rem;
             margin-bottom: 2rem;
-            opacity: 0.9;
+            color: var(--gray);
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
@@ -198,8 +215,8 @@
 
         .btn-secondary {
             background: transparent;
-            color: var(--white);
-            border: 2px solid var(--white);
+            color: var(--primary);
+            border: 2px solid var(--primary);
             padding: 12px 24px;
             border-radius: 8px;
             text-decoration: none;
@@ -208,14 +225,14 @@
         }
 
         .btn-secondary:hover {
-            background: var(--white);
-            color: var(--primary);
+            background: var(--primary);
+            color: var(--white);
         }
 
         /* Why Cloud Section */
         .why-cloud {
             padding: 100px 0;
-            background: var(--light);
+            background: var(--white);
         }
 
         .comparison-grid {
@@ -229,50 +246,24 @@
             padding: 2.5rem;
             border-radius: 16px;
             text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .comparison-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
         .old-way {
-            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
-            border: 2px solid var(--warning);
+            background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%);
+            border: 1px solid #fecaca;
             position: relative;
-        }
-
-        .old-way::before {
-            content: '❌';
-            position: absolute;
-            top: -15px;
-            right: -15px;
-            background: var(--warning);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
         }
 
         .new-way {
-            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
-            border: 2px solid var(--secondary);
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 1px solid #bbf7d0;
             position: relative;
-        }
-
-        .new-way::before {
-            content: '✅';
-            position: absolute;
-            top: -15px;
-            right: -15px;
-            background: var(--secondary);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
         }
 
         .comparison-card h3 {
@@ -282,11 +273,11 @@
         }
 
         .old-way h3 {
-            color: var(--warning);
+            color: #ef4444;
         }
 
         .new-way h3 {
-            color: var(--secondary);
+            color: #22c55e;
         }
 
         .comparison-list {
@@ -296,25 +287,34 @@
 
         .comparison-list li {
             padding: 0.8rem 0;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
+            font-size: 1rem;
+            color: var(--gray);
+        }
+
+        .comparison-list li:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-list li::before {
+            font-size: 1.5rem;
         }
 
         .old-way .comparison-list li::before {
-            content: '💸';
-            font-size: 1.2rem;
+            content: '❌';
         }
 
         .new-way .comparison-list li::before {
-            content: '🚀';
-            font-size: 1.2rem;
+            content: '✅';
         }
 
         /* Services Section */
         .services {
             padding: 100px 0;
+            background: var(--light);
         }
 
         .section-header {
@@ -346,14 +346,15 @@
             background: var(--white);
             padding: 2.5rem;
             border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
-            border: 1px solid rgba(0,102,204,0.1);
+            border: 1px solid #e2e8f0;
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            border-color: var(--primary);
         }
 
         .service-icon {
@@ -392,7 +393,7 @@
             padding-left: 1.5rem;
         }
 
-        .service-features li:before {
+        .service-features li::before {
             content: '✓';
             position: absolute;
             left: 0;
@@ -429,13 +430,18 @@
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.5rem;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
             gap: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item span:first-child {
+            font-size: 1.5rem;
         }
 
         .contact-form {
@@ -462,6 +468,7 @@
             background: rgba(255,255,255,0.1);
             color: var(--white);
             font-size: 1rem;
+            font-family: 'Inter', sans-serif;
         }
 
         .form-group input::placeholder,
@@ -478,7 +485,7 @@
         /* Footer */
         footer {
             background: var(--dark);
-            color: var(--white);
+            color: var(--gray);
             padding: 2rem 0;
             text-align: center;
             border-top: 1px solid rgba(255,255,255,0.1);
@@ -494,15 +501,20 @@
         }
 
         /* Responsive Design */
+        @media (max-width: 992px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
-            .nav-links {
+            .nav-links, .cta-button.nav-cta {
                 display: none;
             }
 
             .hero h1 {
                 font-size: 2.5rem;
             }
-
             .hero p {
                 font-size: 1.1rem;
             }
@@ -512,46 +524,34 @@
                 align-items: center;
             }
 
-            .comparison-grid,
-            .contact-content {
+            .cta-button, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .comparison-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
 
             .lang-switcher {
-                top: 10px;
-                right: 10px;
+                top: 15px;
+                right: 15px;
             }
 
             .alert-banner {
                 font-size: 0.9rem;
-                padding: 10px;
+                padding: 10px 20px;
+                line-height: 1.4;
             }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .service-card,
-        .comparison-card {
-            animation: fadeInUp 0.6s ease-out;
         }
     </style>
 </head>
 <body>
 <!-- Language Switcher -->
 <div class="lang-switcher">
-    <button class="lang-btn active" onclick="switchLanguage('en')" id="lang-en">EN</button>
-    <button class="lang-btn" onclick="switchLanguage('pt')" id="lang-pt">PT</button>
+    <button class="lang-btn active" onclick="switchLanguage('en')" id="lang-btn-en">EN</button>
+    <button class="lang-btn" onclick="switchLanguage('pt')" id="lang-btn-pt">PT</button>
 </div>
 
 <header>
@@ -569,7 +569,8 @@
 <!-- Alert Banner -->
 <div class="alert-banner">
     <div class="container">
-        <span class="alert-text">Planning a new data center? STOP! We'll show you why cloud is cheaper, faster, and more secure.</span>
+        <span class="alert-text-en lang-content active">Planning a new data center? STOP! We'll show you why cloud is cheaper, faster, and more secure.</span>
+        <span class="alert-text-pt lang-content">A planear um novo data center? PARE! Mostramos porque a cloud é mais barata, rápida e segura.</span>
     </div>
 </div>
 
@@ -578,7 +579,7 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Skip the Data Center. Go Straight to Cloud.</h1>
+                <h1>Skip the Data Center. <br><span class="highlight">Go Straight to Cloud.</span></h1>
                 <p>Don't waste millions on outdated infrastructure. We help enterprises migrate to cloud solutions that are 60% cheaper, infinitely scalable, and secure by design.</p>
                 <div class="hero-buttons">
                     <a href="#contact" class="cta-button">Free Cloud Assessment</a>
@@ -588,7 +589,7 @@
         </div>
     </section>
 
-    <section id="why-cloud" class="why-cloud">
+    <section id="why-cloud-en" class="why-cloud">
         <div class="container">
             <div class="section-header">
                 <h2>On-Premises vs Cloud: The Reality</h2>
@@ -625,7 +626,7 @@
         </div>
     </section>
 
-    <section id="services" class="services">
+    <section id="services-en" class="services">
         <div class="container">
             <div class="section-header">
                 <h2>Our Cloud Migration Services</h2>
@@ -680,7 +681,7 @@
         </div>
     </section>
 
-    <section id="contact" class="contact">
+    <section id="contact-en" class="contact">
         <div class="container">
             <div class="contact-content">
                 <div>
@@ -703,20 +704,20 @@
                 </div>
                 <form class="contact-form" action="#" method="POST">
                     <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" placeholder="Your name" required>
+                        <label for="name-en">Full Name</label>
+                        <input type="text" id="name-en" name="name" placeholder="Your name" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" placeholder="your.email@company.com" required>
+                        <label for="email-en">Email Address</label>
+                        <input type="email" id="email-en" name="email" placeholder="your.email@company.com" required>
                     </div>
                     <div class="form-group">
-                        <label for="company">Company</label>
-                        <input type="text" id="company" name="company" placeholder="Your company name">
+                        <label for="company-en">Company</label>
+                        <input type="text" id="company-en" name="company" placeholder="Your company name">
                     </div>
                     <div class="form-group">
-                        <label for="project">Current Infrastructure Challenge</label>
-                        <textarea id="project" name="project" rows="4" placeholder="Tell us about your data center plans or current infrastructure challenges..."></textarea>
+                        <label for="project-en">Current Infrastructure Challenge</label>
+                        <textarea id="project-en" name="project" rows="4" placeholder="Tell us about your data center plans or current infrastructure challenges..."></textarea>
                     </div>
                     <button type="submit" class="cta-button">Get Free Cloud Assessment</button>
                 </form>
@@ -730,46 +731,46 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Esqueça o Data Center. Vá Direto para a Cloud.</h1>
+                <h1>Esqueça o Data Center. <br><span class="highlight">Vá Direto para a Cloud.</span></h1>
                 <p>Não desperdice milhões em infraestrutura obsoleta. Ajudamos empresas a migrar para soluções cloud 60% mais baratas, infinitamente escaláveis e seguras por design.</p>
                 <div class="hero-buttons">
-                    <a href="#contact" class="cta-button">Avaliação Gratuita</a>
-                    <a href="#why-cloud" class="btn-secondary">Ver Comparação</a>
+                    <a href="#contact-pt" class="cta-button">Avaliação Cloud Gratuita</a>
+                    <a href="#why-cloud-pt" class="btn-secondary">Ver a Comparação</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="why-cloud" class="why-cloud">
+    <section id="why-cloud-pt" class="why-cloud">
         <div class="container">
             <div class="section-header">
                 <h2>On-Premises vs Cloud: A Realidade</h2>
-                <p>Construir um data center em 2025 é como comprar um cavalo quando existem carros. Veja por que empresas inteligentes escolhem cloud.</p>
+                <p>Construir um data center em 2025 é como comprar um cavalo quando existem carros. Veja por que empresas inteligentes escolhem a cloud.</p>
             </div>
             <div class="comparison-grid">
                 <div class="comparison-card old-way">
                     <h3>Data Center Tradicional</h3>
                     <ul class="comparison-list">
-                        <li>€500K+ investimento inicial</li>
+                        <li>+500 mil € de investimento inicial</li>
                         <li>6-18 meses para implementar</li>
-                        <li>Equipe de manutenção 24/7</li>
-                        <li>Custos de energia, refrigeração, espaço</li>
+                        <li>Equipa de manutenção 24/7</li>
+                        <li>Custos de energia e espaço</li>
                         <li>Hardware fica obsoleto</li>
-                        <li>Recuperação limitada de desastres</li>
+                        <li>Recuperação de desastres limitada</li>
                         <li>Sem escalabilidade automática</li>
-                        <li>Segurança é seu problema</li>
+                        <li>A segurança é seu problema</li>
                     </ul>
                 </div>
                 <div class="comparison-card new-way">
                     <h3>Infraestrutura Cloud</h3>
                     <ul class="comparison-list">
                         <li>Pague apenas pelo que usar</li>
-                        <li>Funcionando em 24 horas</li>
+                        <li>Ativo em 24 horas</li>
                         <li>Gerido por especialistas cloud</li>
                         <li>Sem infraestrutura física</li>
                         <li>Sempre a tecnologia mais recente</li>
                         <li>Backup e recuperação integrados</li>
-                        <li>Escala automaticamente</li>
+                        <li>Escala automaticamente com a procura</li>
                         <li>Segurança de nível empresarial</li>
                     </ul>
                 </div>
@@ -777,42 +778,42 @@
         </div>
     </section>
 
-    <section id="services" class="services">
+    <section id="services-pt" class="services">
         <div class="container">
             <div class="section-header">
                 <h2>Nossos Serviços de Migração Cloud</h2>
-                <p>Soluções completas de transformação cloud que eliminam a necessidade de infraestrutura on-premises</p>
+                <p>Soluções completas de transformação para a cloud que eliminam a necessidade de infraestrutura on-premises.</p>
             </div>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">☁️</div>
-                    <h3>Migração Completa para Cloud</h3>
-                    <p>Migre toda sua infraestrutura para AWS, Azure ou Google Cloud com zero downtime e economia imediata.</p>
+                    <h3>Migração Completa para a Cloud</h3>
+                    <p>Migre toda a sua infraestrutura para AWS, Azure ou Google Cloud com zero downtime e poupança imediata.</p>
                     <ul class="service-features">
-                        <li>Avaliação e planeamento de migração</li>
+                        <li>Avaliação e planeamento</li>
                         <li>Modernização de aplicações</li>
-                        <li>Migração e otimização de bases de dados</li>
-                        <li>Transformação de sistemas legacy</li>
+                        <li>Migração de bases de dados</li>
+                        <li>Transformação de sistemas legados</li>
                     </ul>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">🔄</div>
                     <h3>Engenharia de Pipelines de Dados</h3>
-                    <p>Construa soluções de dados cloud-native que processam terabytes sem gerir servidores.</p>
+                    <p>Construa soluções de dados cloud-native que processam terabytes de dados sem gerir servidores.</p>
                     <ul class="service-features">
                         <li>Streaming de dados em tempo real</li>
-                        <li>Processamento serverless</li>
-                        <li>Data warehousing na cloud</li>
+                        <li>Processamento de dados serverless</li>
+                        <li>Cloud data warehousing</li>
                         <li>Preparação de dados para IA/ML</li>
                     </ul>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">🔒</div>
-                    <h3>Segurança e Compliance Cloud</h3>
-                    <p>Segurança de nível empresarial melhor que qualquer solução on-premises, gerida por especialistas.</p>
+                    <h3>Segurança e Compliance na Cloud</h3>
+                    <p>Segurança de nível empresarial superior a qualquer solução on-premises, gerida por especialistas.</p>
                     <ul class="service-features">
-                        <li>Arquitetura zero-trust</li>
-                        <li>Compliance automatizada (RGPD, SOC2)</li>
+                        <li>Arquitetura Zero-Trust</li>
+                        <li>Compliance automatizado (RGPD, SOC2)</li>
                         <li>Deteção avançada de ameaças</li>
                         <li>Gestão de identidade e acesso</li>
                     </ul>
@@ -820,11 +821,11 @@
                 <div class="service-card">
                     <div class="service-icon">💰</div>
                     <h3>Otimização de Custos</h3>
-                    <p>Reduza custos de TI em 40-70% comparado com manter infraestrutura on-premises.</p>
+                    <p>Reduza os custos de TI em 40-70% em comparação com a manutenção de infraestrutura on-premises.</p>
                     <ul class="service-features">
-                        <li>Dimensionamento correto de recursos</li>
-                        <li>Escalabilidade automatizada</li>
-                        <li>Planeamento de capacidade reservada</li>
+                        <li>Dimensionamento de recursos</li>
+                        <li>Escalabilidade automática</li>
+                        <li>Planeamento de capacidade</li>
                         <li>Gestão de custos multi-cloud</li>
                     </ul>
                 </div>
@@ -832,12 +833,12 @@
         </div>
     </section>
 
-    <section id="contact" class="contact">
+    <section id="contact-pt" class="contact">
         <div class="container">
             <div class="contact-content">
                 <div>
                     <h2>Pronto para Esquecer o Data Center?</h2>
-                    <p>Obtenha uma avaliação gratuita mostrando quanto poupará ao escolher cloud em vez de construir infraestrutura on-premises.</p>
+                    <p>Obtenha uma avaliação gratuita que mostra o quanto irá poupar ao optar pela cloud em vez de construir infraestrutura on-premises.</p>
                     <div class="contact-info">
                         <div class="contact-item">
                             <span>📧</span>
@@ -854,3 +855,87 @@
                     </div>
                 </div>
                 <form class="contact-form" action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name-pt">Nome Completo</label>
+                        <input type="text" id="name-pt" name="name" placeholder="O seu nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email-pt">Endereço de Email</label>
+                        <input type="email" id="email-pt" name="email" placeholder="seu.email@empresa.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company-pt">Empresa</label>
+                        <input type="text" id="company-pt" name="company" placeholder="Nome da sua empresa">
+                    </div>
+                    <div class="form-group">
+                        <label for="project-pt">Desafio de Infraestrutura Atual</label>
+                        <textarea id="project-pt" name="project" rows="4" placeholder="Fale-nos sobre os seus planos ou desafios de infraestrutura atuais..."></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Obter Avaliação Cloud Gratuita</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2024 SMC & Co., Lda. Todos os direitos reservados.</p>
+        <p>Especialistas em Cloud, Dados e DevSecOps.</p>
+    </div>
+</footer>
+
+<script>
+    // --- Language Switcher ---
+    function switchLanguage(lang) {
+        // Handle content blocks
+        const contents = document.querySelectorAll('.lang-content');
+        contents.forEach(content => {
+            if (content.id === `content-${lang}` || content.classList.contains(`alert-text-${lang}`)) {
+                content.classList.add('active');
+            } else {
+                content.classList.remove('active');
+            }
+        });
+
+        // Handle language buttons
+        const buttons = document.querySelectorAll('.lang-btn');
+        buttons.forEach(button => {
+            if (button.id === `lang-btn-${lang}`) {
+                button.classList.add('active');
+            } else {
+                button.classList.remove('active');
+            }
+        });
+
+        // Update nav links to point to the correct language sections
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => {
+            const section = link.getAttribute('href').split('#')[1];
+            // Check if the element exists before trying to update the href
+            if (document.getElementById(`${section}-${lang}`)) {
+                link.setAttribute('href', `#${section}-${lang}`);
+            }
+        });
+
+        const ctaButton = document.querySelector('header .cta-button.nav-cta');
+        if (ctaButton) {
+            ctaButton.setAttribute('href', `#contact-${lang}`);
+        }
+    }
+
+    // Set initial state based on browser language if it's Portuguese
+    document.addEventListener('DOMContentLoaded', () => {
+        const userLang = navigator.language || navigator.userLanguage;
+        if (userLang.startsWith('pt')) {
+            switchLanguage('pt');
+        } else {
+            // Default to English and update links
+            switchLanguage('en');
+        }
+    });
+
+</script>
+
+</body>
+</html>
