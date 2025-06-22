@@ -9,104 +9,103 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Full CSS stays unchanged for brevity */
+        body {
+            font-family: 'Inter', sans-serif;
+            padding: 2rem;
+            max-width: 700px;
+            margin: auto;
+            background: #f9fafb;
+            color: #1a1a1a;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        form {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        label {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        input, textarea {
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: 1px solid #d1d5db;
+            font-size: 1rem;
+        }
+        button {
+            background: #0066cc;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        button:hover {
+            background: #004999;
+        }
+        .success-message {
+            color: #22c55e;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
     </style>
 </head>
 <body>
 
-<!-- Language Switcher and Header Stay Same -->
+<h1>Cloud Assessment Request (EN)</h1>
+<form action="https://formspree.io/f/xjkrabll" method="POST" onsubmit="return handleSubmit(event, 'en')">
+    <input type="hidden" name="_subject" value="New Cloud Assessment Request">
+    <input type="text" name="_gotcha" style="display:none">
+    <label for="name-en">Full Name</label>
+    <input type="text" name="name" id="name-en" required>
 
-<!-- Alert Banner and Hero Sections Stay Same -->
+    <label for="email-en">Email Address</label>
+    <input type="email" name="email" id="email-en" required>
 
-<!-- ENGLISH CONTACT FORM -->
-<section id="contact-en" class="contact">
-    <div class="container">
-        <div class="contact-content">
-            <div>
-                <h2>Ready to Skip the Data Center?</h2>
-                <p>Get a free assessment showing how much you'll save by going cloud-first instead of building on-premises infrastructure.</p>
-                <div class="contact-info">
-                    <div class="contact-item"><span>📧</span><span>info@itsupportcloud.com</span></div>
-                    <div class="contact-item"><span>🌐</span><span>www.itsupportcloud.com</span></div>
-                    <div class="contact-item"><span>📱</span><span>+351 XXX XXX XXX</span></div>
-                </div>
-            </div>
-            <form class="contact-form" action="https://formspree.io/f/xjkrabll" method="POST" onsubmit="return handleSubmit(event, 'en')">
-                <input type="hidden" name="_subject" value="New Cloud Assessment Request">
-                <input type="text" name="_gotcha" style="display:none">
-                <div class="form-group">
-                    <label for="name-en">Full Name</label>
-                    <input type="text" id="name-en" name="name" placeholder="Your name" required />
-                </div>
-                <div class="form-group">
-                    <label for="email-en">Email Address</label>
-                    <input type="email" id="email-en" name="email" placeholder="your.email@company.com" required />
-                </div>
-                <div class="form-group">
-                    <label for="company-en">Company</label>
-                    <input type="text" id="company-en" name="company" placeholder="Your company name" />
-                </div>
-                <div class="form-group">
-                    <label for="project-en">Current Infrastructure Challenge</label>
-                    <textarea id="project-en" name="project" rows="4" placeholder="Tell us about your data center plans or current infrastructure challenges..."></textarea>
-                </div>
-                <div class="form-group">
-                    <div class="h-captcha" data-sitekey="ff04954e-05a4-4ac8-8c04-0f687372c4a4"></div>
-                </div>
-                <button type="submit" class="cta-button">Get Free Cloud Assessment</button>
-                <p class="success-message" id="success-message-en" style="display:none; margin-top: 1rem; color: var(--secondary); font-weight: 600;">
-                    ✅ Thank you! We'll contact you shortly.
-                </p>
-            </form>
-        </div>
-    </div>
-</section>
+    <label for="company-en">Company</label>
+    <input type="text" name="company" id="company-en">
 
-<!-- PORTUGUESE CONTACT FORM (mirror structure above, adapted language) -->
-<section id="contact-pt" class="contact">
-    <div class="container">
-        <div class="contact-content">
-            <div>
-                <h2>Pronto para Esquecer o Data Center?</h2>
-                <p>Obtenha uma avaliação gratuita que mostra o quanto irá poupar ao optar pela cloud em vez de construir infraestrutura on-premises.</p>
-                <div class="contact-info">
-                    <div class="contact-item"><span>📧</span><span>info@itsupportcloud.com</span></div>
-                    <div class="contact-item"><span>🌐</span><span>www.itsupportcloud.com</span></div>
-                    <div class="contact-item"><span>📱</span><span>+351 XXX XXX XXX</span></div>
-                </div>
-            </div>
-            <form class="contact-form" action="https://formspree.io/f/xjkrabll" method="POST" onsubmit="return handleSubmit(event, 'pt')">
-                <input type="hidden" name="_subject" value="Novo Pedido de Avaliação Cloud">
-                <input type="text" name="_gotcha" style="display:none">
-                <div class="form-group">
-                    <label for="name-pt">Nome Completo</label>
-                    <input type="text" id="name-pt" name="name" placeholder="O seu nome" required />
-                </div>
-                <div class="form-group">
-                    <label for="email-pt">Endereço de Email</label>
-                    <input type="email" id="email-pt" name="email" placeholder="seu.email@empresa.com" required />
-                </div>
-                <div class="form-group">
-                    <label for="company-pt">Empresa</label>
-                    <input type="text" id="company-pt" name="company" placeholder="Nome da sua empresa" />
-                </div>
-                <div class="form-group">
-                    <label for="project-pt">Desafio de Infraestrutura Atual</label>
-                    <textarea id="project-pt" name="project" rows="4" placeholder="Fale-nos sobre os seus planos ou desafios de infraestrutura atuais..."></textarea>
-                </div>
-                <div class="form-group">
-                    <div class="h-captcha" data-sitekey="your-hcaptcha-site-key"></div>
-                </div>
-                <button type="submit" class="cta-button">Obter Avaliação Cloud Gratuita</button>
-                <p class="success-message" id="success-message-pt" style="display:none; margin-top: 1rem; color: var(--secondary); font-weight: 600;">
-                    ✅ Obrigado! Entraremos em contacto em breve.
-                </p>
-            </form>
-        </div>
-    </div>
-</section>
+    <label for="project-en">Current Infrastructure Challenge</label>
+    <textarea name="project" id="project-en" rows="4"></textarea>
 
-<!-- Footer stays unchanged -->
+    <div class="h-captcha" data-sitekey="ff04954e-05a4-4ac8-8c04-0f687372c4a4"></div>
+
+    <button type="submit">Submit</button>
+    <p class="success-message" id="success-message-en" style="display:none;">✅ Thank you! We'll contact you shortly.</p>
+</form>
+
+<h1 style="margin-top: 4rem;">Pedido de Avaliação Cloud (PT)</h1>
+<form action="https://formspree.io/f/xjkrabll" method="POST" onsubmit="return handleSubmit(event, 'pt')">
+    <input type="hidden" name="_subject" value="Novo Pedido de Avaliação Cloud">
+    <input type="text" name="_gotcha" style="display:none">
+    <label for="name-pt">Nome Completo</label>
+    <input type="text" name="name" id="name-pt" required>
+
+    <label for="email-pt">Endereço de Email</label>
+    <input type="email" name="email" id="email-pt" required>
+
+    <label for="company-pt">Empresa</label>
+    <input type="text" name="company" id="company-pt">
+
+    <label for="project-pt">Desafio de Infraestrutura Atual</label>
+    <textarea name="project" id="project-pt" rows="4"></textarea>
+
+    <div class="h-captcha" data-sitekey="your-hcaptcha-site-key"></div>
+
+    <button type="submit">Submeter</button>
+    <p class="success-message" id="success-message-pt" style="display:none;">✅ Obrigado! Entraremos em contacto em breve.</p>
+</form>
 
 <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 <script>
@@ -114,7 +113,6 @@
         event.preventDefault();
         const form = event.target;
         const successMsg = document.getElementById(`success-message-${lang}`);
-
         fetch(form.action, {
             method: 'POST',
             body: new FormData(form),
@@ -124,14 +122,14 @@
                 form.reset();
                 successMsg.style.display = 'block';
             } else {
-                alert("Oops! There was a problem submitting your form.");
+                alert(\"Oops! There was a problem submitting your form.\");
             }
         }).catch(() => {
-            alert("There was an error submitting the form. Please try again later.");
+            alert(\"Error submitting the form. Please try again later.\");
         });
-
         return false;
     }
 </script>
+
 </body>
 </html>
